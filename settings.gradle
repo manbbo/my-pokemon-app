@@ -1,2 +1,5 @@
+include ':app:pokemodule'
+include ':app:pokemon_module'
+include ':app:sampleapp'
 include ':app'
 rootProject.name = "My Pokemon"
