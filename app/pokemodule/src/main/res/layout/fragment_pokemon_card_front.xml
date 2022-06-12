@@ -8,8 +8,7 @@
     android:layout_margin="10dp"
     android:importantForAccessibility="no"
     android:focusable="false"
-    android:background="@drawable/round_card_layout"
-    tools:context=".view.fragments.PokemonCardFrontFragment">
+    android:background="@drawable/round_card_layout">
 
     <LinearLayout
         android:id="@+id/front_layout"

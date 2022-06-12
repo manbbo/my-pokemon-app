@@ -14,7 +14,7 @@ class PokemonSpecificViewModel(
     val state = MutableLiveData<SpecificPokemonResponse>()
     val observable: LiveData<SpecificPokemonResponse> = state
 
-    fun getPokemonById(id: Int) {
+    fun getPokemonById(id: Long) {
         launch(interactor.dispatcher) {
             try {
                 val response = interactor.getPokemonById(id)

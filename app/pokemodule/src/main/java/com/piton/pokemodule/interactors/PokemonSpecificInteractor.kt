@@ -10,7 +10,7 @@ class PokemonSpecificInteractor(
     val api: Api,
     val dispatcher: CoroutineDispatcher = Dispatchers.IO
 ) {
-    suspend fun getPokemonById(id: Int): SpecificPokemonResponse? =
+    suspend fun getPokemonById(id: Long): SpecificPokemonResponse? =
         withContext(dispatcher) {
             api.getSpecificPokemonById(id)
         }

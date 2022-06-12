@@ -14,6 +14,7 @@ import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.piton.pokemodule.model.PokemonShowcaseResponse
+import com.piton.pokemodule.view.fragments.PokemonDetailsDialog
 
 class PokemonShowcaseAdapter(
     private val context: Context,
@@ -32,12 +33,10 @@ class PokemonShowcaseAdapter(
     inner class PokemonShowcaseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var cardImage =
             itemView.findViewById<ImageView>(R.id.card_image)
-//                ?: itemView.findViewById<ImageView>(R.id.card_image_flipped)
         var cardTitle =
             itemView.findViewById<TextView>(R.id.card_title)
-//                ?: itemView.findViewById<TextView>(R.id.card_title_flipped)
-//        var cardAttributes =
-//            itemView.findViewById<TextView>(R.id.card_attributes_flipped) ?: null
+
+        fun getRootView(): View = itemView
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PokemonShowcaseViewHolder {
@@ -55,64 +54,24 @@ class PokemonShowcaseAdapter(
 
         var item = listPokemons[position]
 
-            Glide.with(context)
-                .load(item.getImageUrl())
-                .apply(requestOptions)
-                .into(holder.cardImage)
+        Glide.with(context)
+            .load(item.getImageUrl())
+            .apply(requestOptions)
+            .into(holder.cardImage)
 
-            holder.cardTitle.text = item.name
+        holder.cardTitle.text = item.name
 
-//        else if (item is SpecificPokemonResponse) {
-//            Glide.with(context)
-//                .load(item.getImageUrl())
-//                .apply(requestOptions)
-//                .into(holder.cardImage)
-//
-//            holder.cardTitle.text = item.getName()
-//
-//            val abilities = mapPokemonAbility(item.abilities)
-//            val types = mapPokemonTypes(item.types)
-//            val forms = mapPokemonForms(item.forms)
-//
-//            holder.cardAttributes?.text =
-//                "height: ${item.height}\n" +
-//                        "base experience: ${item.baseXp}\n" +
-//                        "weight: ${item.weight}\n" +
-//                        "[abilities:${abilities}]\n" +
-//                        "[types: ${types}]" +
-//                        "[forms: ${forms}]"
-//        }
+        clickAction(
+            holder.getRootView(),
+            item
+        )
     }
 
-//    private fun mapPokemonAbility(abilities: List<Abilities>): String {
-//        var pokemonAbilities = ""
-//
-//        for (slot in abilities) {
-//            pokemonAbilities += "\nslot: ${slot.slotNumber}, ability: ${slot.ability.name}"
-//        }
-//
-//        return pokemonAbilities
-//    }
-//
-//    private fun mapPokemonTypes(types: List<Types>): String {
-//        var pokemonTypes = ""
-//
-//        for (singleType in types) {
-//            pokemonTypes += "\n${singleType.type.name}"
-//        }
-//
-//        return pokemonTypes
-//    }
-//
-//    private fun mapPokemonForms(forms: List<Forms>): String {
-//        var pokemonForms = ""
-//
-//        for (singleForm in forms) {
-//            pokemonForms += "\n${singleForm.name}"
-//        }
-//
-//        return pokemonForms
-//    }
+    private fun clickAction(rootView: View, pokemon: PokemonShowcaseResponse) {
+        rootView.setOnClickListener {
+            PokemonDetailsDialog.newDialog(pokemon.getId())
+        }
+    }
 
     override fun getItemCount(): Int = listPokemons.size
 }

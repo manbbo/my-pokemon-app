@@ -14,6 +14,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.piton.pokemodule.R
 import com.piton.pokemodule.model.PokemonShowcaseResponse
+import com.piton.pokemodule.view.fragments.PokemonDetailsDialog
 
 class PokemonListAdapter(
     val context: Context,
@@ -65,6 +66,14 @@ class PokemonListAdapter(
 
         cardTitle.text = item.name
 
+        clickAction(view, item)
+
         return view
+    }
+
+    private fun clickAction(rootView: View, pokemon: PokemonShowcaseResponse) {
+        rootView.setOnClickListener {
+            PokemonDetailsDialog.newDialog(pokemon.getId())
+        }
     }
 }

@@ -18,6 +18,6 @@ interface Api {
 
     @GET("/pokemon/{pokemonId}")
     fun getSpecificPokemonById(
-        pokemonId: Int
+        pokemonId: Long
     ): SpecificPokemonResponse
 }

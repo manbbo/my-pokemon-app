@@ -9,7 +9,7 @@
     android:focusable="false"
     android:orientation="vertical"
     android:background="@drawable/round_card_flipped_layout"
-    tools:context=".view.fragments.PokemonCardBackFragment">
+    tools:context=".view.fragments.PokemonDetailsDialog">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/flipped_layout"
