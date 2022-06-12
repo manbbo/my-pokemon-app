@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContentProviderCompat.requireContext
@@ -30,8 +31,10 @@ class PokemonDetailsDialog private constructor() : DialogFragment(), PokemonInte
     override var imageView: ImageView = binding.cardImageFlipped
     override var titleView: TextView = binding.cardTitleFlipped
     override var attributesView: TextView? = binding.cardAttributesFlipped
-    override var pokemonId: Int = 0
+    override var pokemonId: Long = 0
     override var url: String = ""
+    private lateinit var closeBt: ImageButton
+
     lateinit var viewModel: PokemonSpecificViewModel
     lateinit var pokemon: SpecificPokemonResponse
 
@@ -43,17 +46,22 @@ class PokemonDetailsDialog private constructor() : DialogFragment(), PokemonInte
         _binding = FragmentPokemonCardBackBinding
             .inflate(inflater, container, false)
 
+        this.pokemonId = pokeId
+        closeBt = _binding.closeBt
+        clickAction()
+
         return binding.root
     }
 
     override fun onResume() {
         super.onResume()
+
         getSpecificPokemonStatus()
         setPokemonData()
     }
 
     private fun getSpecificPokemonStatus() {
-        viewModel.getPokemonById(pokeId)
+        viewModel.getPokemonById(pokemonId)
 
         viewModel.observable.observe(
             this,
@@ -128,8 +136,14 @@ class PokemonDetailsDialog private constructor() : DialogFragment(), PokemonInte
         return pokemonForms
     }
 
+    private fun clickAction() {
+        closeBt.setOnClickListener {
+            dialog?.dismiss()
+        }
+    }
+
     companion object {
-        var pokeId: Long = 0
+        private var pokeId: Long = 0
 
         fun newDialog(
             pokeId: Long

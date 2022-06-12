@@ -11,6 +11,16 @@
     android:background="@drawable/round_card_flipped_layout"
     tools:context=".view.fragments.PokemonDetailsDialog">
 
+    <ImageButton
+        android:layout_margin="20dp"
+        android:id="@+id/close_bt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_close"
+        android:background="@android:color/transparent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/flipped_layout"
         android:layout_width="match_parent"
@@ -34,6 +44,7 @@
             android:focusable="true"
             android:text="@string/pokemon_title"
             android:textAllCaps="true"
+            android:textColor="@color/black"
             android:textSize="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -64,6 +75,7 @@
                 android:id="@+id/card_attributes_flipped"
                 android:importantForAccessibility="yes"
                 android:focusable="true"
+                android:textColor="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"

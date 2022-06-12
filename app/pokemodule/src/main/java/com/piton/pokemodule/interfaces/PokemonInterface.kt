@@ -7,6 +7,6 @@ interface PokemonInterface {
     var imageView: ImageView
     var titleView: TextView
     var attributesView: TextView?
-    var pokemonId: Int
+    var pokemonId: Long
     var url: String
 }

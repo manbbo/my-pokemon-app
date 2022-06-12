@@ -32,6 +32,7 @@
             android:importantForAccessibility="yes"
             android:focusable="true"
             android:text="@string/pokemon_title"
+            android:textColor="@color/black"
             android:textAllCaps="true"
             android:textSize="20dp" />
 
