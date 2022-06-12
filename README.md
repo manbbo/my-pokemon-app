@@ -14,9 +14,12 @@
 
 # About the project
 
-I decided to separate it into pages of 20 items, because it'd be lighter and smoother for the user to use. I also made it really simple so the user can scroll easily through them. I've put all in order (got their IDs) so you can also see their evolution and position.
+I used MvvMI (Model View ViewModel Interface) to make this app and it uses Fragments to create the pokemons listing.
 
-In addition, when you click an Item, you're transported to the Pokémon Detailed page, where you can see their name in BOLD, its front photo, its types, and a scrollable list of attacks.
+I also created a "Showcase" so you can see all 5 main pokemons, and then a list getting the rest of it.
+
+Created an Application as well so I could better manage items such as Context and global variables.
+
 
 # Development setup
 

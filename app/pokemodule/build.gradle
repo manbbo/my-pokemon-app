@@ -7,6 +7,10 @@ android {
     compileSdkVersion 31
     buildToolsVersion "30.0.3"
 
+    aaptOptions {
+        noCompress '...'
+    }
+
     defaultConfig {
         minSdkVersion 24
         targetSdkVersion 31

@@ -69,7 +69,7 @@ class PokemonShowcaseAdapter(
 
     private fun clickAction(rootView: View, pokemon: PokemonShowcaseResponse) {
         rootView.setOnClickListener {
-            PokemonDetailsDialog.newDialog(pokemon.getId())
+            PokemonDetailsDialog.newDialog(pokemon.getId()).show()
         }
     }
 
