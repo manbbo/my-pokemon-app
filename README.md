@@ -14,7 +14,7 @@
 
 # About the project
 
-I used MvvMI (Model View ViewModel Interface) to make this app and it uses Fragments to create the pokemons listing.
+I used MvvMI (Model View ViewModel Interface), with Clean Architecture to make this app and it uses Fragments to create the pokemons listing.
 
 I also created a "Showcase" so you can see all 5 main pokemons, and then a list getting the rest of it.
 
